@@ -116,8 +116,7 @@ async def handle_docs_photo(message: types.Message):
                                       'data/' + str(message.from_user.id) + '/' + files.file_path[-12:])
         now = datetime.datetime.now()
         #logger.warning('Now = {}', now)
-        #logger.info('{} {}', message.from_user.username,
-                    'data/' + str(message.from_user.first_name) + '/' + files.file_path[-12:])
+        #logger.info('{} {}', message.from_user.username, 'data/' + str(message.from_user.first_name) + '/' + files.file_path[-12:])
         if now - before > datetime.timedelta(seconds=1):
             await message.answer('Все сохранено', reply_markup=inkb)
     except Exception as e:
@@ -136,8 +135,7 @@ async def handle_docs(message: types.Message):
                                       'data/' + str(message.from_user.id) + '/' + files.file_path[-12:])
         now = datetime.datetime.now()
         #logger.warning('Before = {}', before)
-        #logger.info('{} {}', message.from_user.first_name, 'data/' + str(message.from_user.id) +
-                    '/' + files.file_path[-12:])
+        #logger.info('{} {}', message.from_user.first_name, 'data/' + str(message.from_user.id) + '/' + files.file_path[-12:])
         if now - before > datetime.timedelta(seconds=1):
             await message.answer('Все сохранено', reply_markup=inkb)
     except Exception as e:
