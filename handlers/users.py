@@ -3,7 +3,7 @@ import os
 import datetime
 
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from loguru import logger
+#from loguru import logger
 
 from os import path
 from aiogram import types, Dispatcher
@@ -108,15 +108,15 @@ async def take_test(message: types.Message):
 # @dp.message_handler(content_types=['photo'])
 async def handle_docs_photo(message: types.Message):
     before = datetime.datetime.now()
-    logger.warning('Before = {}', before)
+    #logger.warning('Before = {}', before)
     try:
         files = await bot.get_file(message.photo[-1].file_id)
         # await message.answer('data/' + str(message.from_user.id) + files.file_path[-12:])
         await bot.download_file_by_id(message.photo[-1].file_id,
                                       'data/' + str(message.from_user.id) + '/' + files.file_path[-12:])
         now = datetime.datetime.now()
-        logger.warning('Now = {}', now)
-        logger.info('{} {}', message.from_user.username,
+        #logger.warning('Now = {}', now)
+        #logger.info('{} {}', message.from_user.username,
                     'data/' + str(message.from_user.first_name) + '/' + files.file_path[-12:])
         if now - before > datetime.timedelta(seconds=1):
             await message.answer('Все сохранено', reply_markup=inkb)
@@ -128,15 +128,15 @@ async def handle_docs_photo(message: types.Message):
 # @dp.message_handler(content_types=['document'])
 async def handle_docs(message: types.Message):
     before = datetime.datetime.now()
-    logger.warning('Before = {}', before)
+    #logger.warning('Before = {}', before)
     try:
         files = await bot.get_file(message.document.file_id)
-        logger.debug('{}', message)
+        #logger.debug('{}', message)
         await bot.download_file_by_id(message.document.file_id,
                                       'data/' + str(message.from_user.id) + '/' + files.file_path[-12:])
         now = datetime.datetime.now()
-        logger.warning('Before = {}', before)
-        logger.info('{} {}', message.from_user.first_name, 'data/' + str(message.from_user.id) +
+        #logger.warning('Before = {}', before)
+        #logger.info('{} {}', message.from_user.first_name, 'data/' + str(message.from_user.id) +
                     '/' + files.file_path[-12:])
         if now - before > datetime.timedelta(seconds=1):
             await message.answer('Все сохранено', reply_markup=inkb)
